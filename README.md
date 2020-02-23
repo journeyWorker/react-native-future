@@ -32,23 +32,23 @@
 
 ## 해야할 일
 
-[x] RN 62 와 expo integration
-[x] 주요 클라이언트 라이브러리 설치
-[x] babel, typescript, webpack 설정
-[x] eslint 설정
-[ ] lottie-react 구현하기 ( 제대로된 react 구현체가 없음 )
-[ ] jest 설정
-[ ] cypress 설정
-[ ] detox 설정
-[ ] lottieView unit, e2e 테스트 통과시키기
-[ ] xState로 todolist 구현하기
-[ ] apollo client 로 client resolver 만 써서 apollo 붙이기
-[ ] xState 와 apollo 연동
-[ ] jest, cypress, detox 로 투두까지 테스트하기
-[ ] prisma2, nexus 로 todo 백엔드 구현
-[ ] gcp에 배포하고 server ci 부터 셋업
-[ ] client detox ci 환경 셋업
-[ ] bugsnag 설정
-[ ] pm2+dokcer+prometheus+grafana 로 서버 apm 구축
-[ ] pulsa 를 메시지브로커로 해서 CQRS SQL + mongodb 구조 만들어보기
-[ ] event Sourcing 구현해보기
+- [x] RN 62 와 expo integration
+- [x] 주요 클라이언트 라이브러리 설치
+- [x] babel, typescript, webpack 설정
+- [x] eslint 설정
+- [ ] lottie-react 구현하기 ( 제대로된 react 구현체가 없음 )
+- [ ] jest 설정
+- [ ] cypress 설정
+- [ ] detox 설정
+- [ ] lottieView unit, e2e 테스트 통과시키기
+- [ ] xState로 todolist 구현하기
+- [ ] apollo client 로 client resolver 만 써서 apollo 붙이기
+- [ ] xState 와 apollo 연동
+- [ ] jest, cypress, detox 로 투두까지 테스트하기
+- [ ] prisma2, nexus 로 todo 백엔드 구현
+- [ ] gcp에 배포하고 server ci 부터 셋업
+- [ ] client detox ci 환경 셋업
+- [ ] bugsnag 설정
+- [ ] pm2+dokcer+prometheus+grafana 로 서버 apm 구축
+- [ ] pulsa 를 메시지브로커로 해서 CQRS SQL + mongodb 구조 만들어보기
+- [ ] event Sourcing 구현해보기
