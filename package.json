@@ -120,6 +120,20 @@
     },
     "testRegex": "__tests__/.*\\.test\\.tsx?$"
   },
-
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{css,scss,md}": [
+      "prettier --write --loglevel warn",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix --quiet",
+      "git add"
+    ]
+  },
   "private": true
 }

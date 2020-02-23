@@ -8,7 +8,7 @@ import {
 
 const styles = StyleSheet.create({
   example: {
-    height: 200,
+    height: 220,
     flex: 1,
   },
 });
