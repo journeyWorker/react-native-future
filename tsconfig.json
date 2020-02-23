@@ -54,6 +54,6 @@
     ]
   },
   "include": [
-    "src", "App.tsx"
+    "src", "App.tsx", "jest.config.js"
   ]
 }
