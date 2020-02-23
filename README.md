@@ -39,8 +39,9 @@
 - [x] 주요 클라이언트 라이브러리 설치
 - [x] babel, typescript, webpack 설정
 - [x] eslint 설정
+- [x] jest 설정
+- [x] code-climate test coverage CI 설정
 - [ ] lottie-react 구현하기 ( 제대로된 react 구현체가 없음 )
-- [ ] jest 설정
 - [ ] cypress 설정
 - [ ] detox 설정
 - [ ] lottieView unit, e2e 테스트 통과시키기
