@@ -1,0 +1,83 @@
+diff --git a/node_modules/@ui-kitten/components/ui/menu/subMenu.component.js b/node_modules/@ui-kitten/components/ui/menu/subMenu.component.js
+index 574c3eb..c1c6434 100644
+--- a/node_modules/@ui-kitten/components/ui/menu/subMenu.component.js
++++ b/node_modules/@ui-kitten/components/ui/menu/subMenu.component.js
+@@ -23,12 +23,14 @@ class SubMenuComponent extends React.Component {
+         this.subItemsExpandAnimate = (toValue) => {
+             Animated.spring(this.subItemsAnimation, {
+                 toValue: toValue,
++                useNativeDriver: true,
+             }).start();
+         };
+         this.animateIcon = (toValue) => {
+             Animated.timing(this.iconAnimation, {
+                 toValue: toValue,
+                 duration: 200,
++                useNativeDriver: true,
+             }).start();
+         };
+         this.onMainItemPress = () => {
+diff --git a/node_modules/@ui-kitten/components/ui/select/select.component.js b/node_modules/@ui-kitten/components/ui/select/select.component.js
+index f146b5e..4c94c6e 100644
+--- a/node_modules/@ui-kitten/components/ui/select/select.component.js
++++ b/node_modules/@ui-kitten/components/ui/select/select.component.js
+@@ -205,6 +205,7 @@ class SelectComponent extends React.Component {
+             return Animated.timing(this.iconAnimation, {
+                 toValue: toValue,
+                 duration: 200,
++                useNativeDriver: true,
+             });
+         };
+         this.getComponentStyle = (source) => {
+diff --git a/node_modules/@ui-kitten/components/ui/support/components/tabIndicator.component.js b/node_modules/@ui-kitten/components/ui/support/components/tabIndicator.component.js
+index d09aa65..3f52e7b 100644
+--- a/node_modules/@ui-kitten/components/ui/support/components/tabIndicator.component.js
++++ b/node_modules/@ui-kitten/components/ui/support/components/tabIndicator.component.js
+@@ -17,6 +17,7 @@ export class TabIndicator extends React.Component {
+                 toValue: I18nLayoutService.select(params.offset, -params.offset),
+                 duration: animationDuration,
+                 easing: Easing.linear,
++                useNativeDriver: true,
+             });
+         };
+         this.onLayout = (event) => {
+diff --git a/node_modules/@ui-kitten/components/ui/toggle/toggle.component.js b/node_modules/@ui-kitten/components/ui/toggle/toggle.component.js
+index 8f8a708..59a3ea2 100644
+--- a/node_modules/@ui-kitten/components/ui/toggle/toggle.component.js
++++ b/node_modules/@ui-kitten/components/ui/toggle/toggle.component.js
+@@ -175,6 +175,7 @@ export class ToggleComponent extends React.Component {
+                 toValue: I18nLayoutService.select(value, -value),
+                 duration: 150,
+                 easing: Easing.linear,
++                useNativeDriver: true,
+             }).start(() => {
+                 this.thumbTranslateAnimationActive = false;
+                 callback();
+@@ -185,6 +186,7 @@ export class ToggleComponent extends React.Component {
+                 toValue: value,
+                 duration: 150,
+                 easing: Easing.linear,
++                useNativeDriver: true,
+             }).start(callback);
+         };
+         this.animateEllipseScale = (value, callback = () => null) => {
+@@ -192,6 +194,7 @@ export class ToggleComponent extends React.Component {
+                 toValue: value,
+                 duration: 200,
+                 easing: Easing.linear,
++                useNativeDriver: true,
+             }).start(callback);
+         };
+         this.stopAnimations = () => {
+diff --git a/node_modules/@ui-kitten/components/ui/viewPager/viewPager.component.js b/node_modules/@ui-kitten/components/ui/viewPager/viewPager.component.js
+index 3afde51..cf3a504 100644
+--- a/node_modules/@ui-kitten/components/ui/viewPager/viewPager.component.js
++++ b/node_modules/@ui-kitten/components/ui/viewPager/viewPager.component.js
+@@ -90,6 +90,7 @@ export class ViewPager extends React.Component {
+                 toValue: I18nLayoutService.select(-params.offset, params.offset),
+                 easing: Easing.linear,
+                 duration: animationDuration,
++                useNativeDriver: true,
+             });
+         };
+         this.renderComponentChild = (source, index) => {

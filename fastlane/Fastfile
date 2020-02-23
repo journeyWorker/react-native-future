@@ -1,0 +1,104 @@
+fastlane_require 'time'
+fastlane_version '2.140.0'
+fastlane_require 'spaceship'
+fastlane_require 'json'
+
+build_number = Time.now.strftime('%y%m%d%H%M')
+package = load_json(json_path: "package.json")
+VERSION_NAME = package["version"]
+
+
+
+desc "Add Lottie.framework to Embedded Binaries"
+lane :add_lottie_framework do
+  lottie_xcodeproj_path = '../../node_modules/lottie-ios/Lottie.xcodeproj'
+  if File.exist?(lottie_xcodeproj_path)
+    project_location = '../ENV["GYM_SCHEME"].xcodeproj'
+    target_name = 'ENV["GYM_SCHEME"]'
+    framework_name = 'Lottie.framework'
+
+    # Get useful variables
+    project = Xcodeproj::Project.open(project_location)
+    target = project.targets.find { |target| target.to_s == target_name }
+    frameworks_build_phase = target.build_phases.find { |build_phase| build_phase.to_s == 'FrameworksBuildPhase' }
+
+    # Add new "Embed Frameworks" build phase to target
+    embed_frameworks_build_phase = target.new_copy_files_build_phase('Embed Frameworks')
+    embed_frameworks_build_phase.symbol_dst_subfolder_spec = :frameworks
+
+    # Get reference to Lottie.framework file
+    objects = project.objects.select { |obj| obj.isa == 'PBXContainerItemProxy'}
+    lottie_ios = objects.find { |object| object.remote_info == 'Lottie_iOS' }
+    objects = project.objects.select { |obj| obj.isa == 'PBXReferenceProxy'}
+    framework_ref = objects.find { |object| object.remote_ref == lottie_ios }
+
+    # Add framework to target as "Embedded Frameworks"
+    build_file = embed_frameworks_build_phase.add_file_reference(framework_ref)
+    frameworks_build_phase.add_file_reference(framework_ref)
+    build_file.settings = { 'ATTRIBUTES' => ['CodeSignOnCopy', 'RemoveHeadersOnCopy'] }
+
+    project.save
+  end
+end
+
+platform :ios do
+  lane :tag do
+    prodTag = "IOS/PROD"
+    sh('git', 'tag', prodTag, '--force')
+    sh('git', 'push', 'origin', prodTag, '--no-verify', '--force')
+  end
+
+  # lane :codepush do |options|
+  #   deploy = options[:deploy] ? options[:deploy] : 'Production'
+  #     UI.header "deploy to #{deploy}"
+  #   if options[:mandatory]
+  #     UI.header "---필수 업데이트 배포---"
+  #     is_sure = UI.confirm "정말로 필수 업데이트를 배포할까요? "
+  #     code_push_deploy(live: true, platform: 'ios', mandatory: is_sure, deploy:deploy)
+  #   else
+  #     code_push_deploy(live: true, platform: 'ios', mandatory: false, deploy:deploy)
+  #   end
+  #   tag_version = sentry(deploy: deploy)
+  #   # slack_message(
+  #   #   message: 'Code Push 배포에 성공하였습니다.',
+  #   #   payload: {
+  #   #     "Platform" => 'IOS',
+  #   #     "Version" => tag_version,
+  #   #     "Deployment" => options[:deploy],
+  #   #     "Build Date" => Time.new.to_s,
+  #   #     "Mandatory" => options[:mandatory],
+  #   # })
+  # end
+
+  # lane :binary_build do
+  #   # certificates
+  #   increment_build_number(
+  #     xcodeproj: './ios/journeyapp.xcodeproj',
+  #     build_number: build_number
+  #   )
+  #   increment_version_number_in_plist(
+  #     xcodeproj: './ios/journeyapp.xcodeproj',
+  #     version_number: VERSION_NAME,
+  #     scheme: 'journeyapp'
+  #   )
+  #   increment_version_number_in_plist(
+  #     xcodeproj: './ios/journeyapp.xcodeproj',
+  #     version_number: VERSION_NAME,
+  #     scheme: 'notificationService'
+  #   )
+  #   build_ios_app(
+  #     scheme: 'journeyapp',
+  #     project: './ios/journeyapp.xcodeproj',
+  #     silent: true,
+  #     export_method: 'app-store',
+  #     output_name: 'journeyapp.ipa'
+  #   )
+
+  #   gitTag = "IOS/#{VERSION_NAME}/local"
+  #   add_git_tag(
+  #     tag: gitTag,
+  #   )
+  #   sh('git', 'push', 'origin', gitTag, '--no-verify')
+  #   gitTag
+  # end
+end
