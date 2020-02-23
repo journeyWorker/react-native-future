@@ -1,5 +1,7 @@
 # REACT NATIVE NEXT WORLD
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/db62ea953d04a04cbf11/maintainability)](https://codeclimate.com/github/HwangJJung/react-native-future/maintainability)
+
 현업에선 소수만 쓰거나 아무도 쓰지 않는 다음 세대 기술스택으로 만들어보는 RN 프로젝트.
 
 ## 목표
