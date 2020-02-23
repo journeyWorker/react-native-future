@@ -1,9 +1,10 @@
 # REACT NATIVE NEXT WORLD
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/db62ea953d04a04cbf11/maintainability)](https://codeclimate.com/github/HwangJJung/react-native-future/maintainability)
-
-![reactNative](https://img.shields.io/static/v1?label=reactNative&message=0.62.0-rc.2&color=blue)
+![reactNative](https://img.shields.io/static/v1?label=react-native&message=0.62.0-rc.2&color=blue)
 ![platform](https://img.shields.io/static/v1?label=platform&message=ios|android|web&color=lightgray)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/db62ea953d04a04cbf11/maintainability)](https://codeclimate.com/github/HwangJJung/react-native-future/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/db62ea953d04a04cbf11/test_coverage)](https://codeclimate.com/github/HwangJJung/react-native-future/test_coverage)
 
 현업에선 소수만 쓰거나 아무도 쓰지 않는 다음 세대 기술스택으로 만들어보는 RN 프로젝트.
 
