@@ -5,28 +5,39 @@ module.exports = function(api) {
       production: {
         presets: [
           [
-            'babel-preset-expo',
+            "babel-preset-expo",
             {
               lazyImports: true,
-              web: { disableImportExportTransform: true },
-            },
-          ],
+              web: { disableImportExportTransform: true }
+            }
+          ]
         ],
-        plugins: ['babel-plugin-styled-components', 'lodash'],
+        plugins: ["babel-plugin-styled-components", "lodash"]
       },
       development: {
         presets: [
           [
-            'babel-preset-expo',
+            "babel-preset-expo",
             {
               lazyImports: true,
-              web: { disableImportExportTransform: true },
-            },
-          ],
-
+              web: { disableImportExportTransform: true }
+            }
+          ]
         ],
-        plugins: ['babel-plugin-styled-components', 'lodash'],
+        plugins: ["babel-plugin-styled-components", "lodash"]
       },
-    },
+      test: {
+        presets: [
+          [
+            "babel-preset-expo",
+            {
+              lazyImports: true,
+              web: { disableImportExportTransform: true }
+            }
+          ]
+        ],
+        plugins: ["babel-plugin-styled-components", "lodash"]
+      }
+    }
   };
 }

@@ -6,7 +6,11 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
-    "postinstall": "patch-package; jetify; cd ios; pod repo update; pod install; cd -;"
+    "postinstall": "patch-package; jetify; cd ios; pod repo update; pod install; cd -;",
+    "test:clean": "rimraf ./coverage",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
+    "test:watch": "cross-env NODE_ENV=test jest --watch"
   },
   "dependencies": {
     "@apollo/client": "3.0.0-beta.35",
@@ -65,6 +69,7 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.10.7",
     "babel-preset-expo": "~8.0.0",
+    "cross-env": "^7.0.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "7.18.3",
     "eslint-plugin-react-native": "3.8.1",
@@ -88,38 +93,6 @@
   "resolutions": {
     "hermes-engine": "0.4.0"
   },
-  "jest": {
-    "preset": "react-native",
-    "collectCoverageFrom": [
-      "src/**/*.{ts,tsx}",
-      "!web/**/*.{js,jsx,ts,tsx}",
-      "!web-build/**/*.{js,jsx,ts,tsx}"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "statements": 0.2,
-        "branches": 0.2,
-        "functions": 0.2,
-        "lines": 0.2
-      }
-    },
-    "moduleFileExtensions": [
-      "ts",
-      "tsx"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "src"
-    ],
-    "moduleNameMapper": {
-      ".*\\.(css|less|styl|scss|sass)$": "identity-obj-proxy",
-      ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/mocks/image.js"
-    },
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "__tests__/.*\\.test\\.tsx?$"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -127,12 +100,10 @@
   },
   "lint-staged": {
     "*.{css,scss,md}": [
-      "prettier --write --loglevel warn",
-      "git add"
+      "prettier --write --loglevel warn"
     ],
     "*.{ts,tsx}": [
-      "eslint --fix --quiet",
-      "git add"
+      "eslint --fix --quiet"
     ]
   },
   "private": true
